@@ -1,0 +1,30 @@
+﻿@*@{
+        ViewData["Title"] = "Movie Search";
+    }
+
+    <div class="text-center">
+        <h1 class="display-4">Search For A Movie</h1>
+
+        <input id="SearchBox" type="text" name="value" />
+        <input id="submit" type="submit" name="Search" />
+
+    </div>*@
+
+
+
+@model IEnumerable<MovieModel>
+
+<div class="text-center">
+    <h1 class="display-4">Search For A Movie</h1>
+
+    <form action="https://movie-database-imdb-alternative.p.rapidapi.com/?s=Avengers%20Endgame&page=1&r=json%22" method="get">
+        <input type="text" placeholder="type here" />
+        <button type="submit">Submit</button>
+
+    </form>
+    @*
+    <input type="text" placeholder="type here" required>
+    <button type="submit">submit</button>*@
+
+</div>
+
