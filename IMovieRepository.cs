@@ -8,6 +8,9 @@ namespace MovieDatabaseProject
 {
     public interface IMovieRepository
     {
-        public IEnumerable<MovieModel> GetMovies();
+        public IEnumerable<MovieModel> GetMovies(string userInput);
+
+        //view individual movie
+        //public MovieModel GetMovie(string viewMovie); //use IEnumerable instead?
     }
 }

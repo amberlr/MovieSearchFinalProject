@@ -19,9 +19,33 @@ namespace MovieDatabaseProject.Controllers
             _logger = logger;
         }
 
+        //private readonly IMovieRepository repo;
+
+        //public HomeController(IMovieRepository repo)
+        //{
+        //    this.repo = repo;
+        //}
+
         public IActionResult Index()
         {
-            return View();
+            var movie = new MovieModel();
+            return View(movie);
+        }
+
+        public IActionResult Search(MovieModel movie)
+        {
+            var repo = new MovieRepository();
+            var movies = repo.GetMovies(movie.Title);
+
+            return View(movies);
+
+        }
+        public IActionResult ViewMovie(string movieTitle)
+        {
+            var repo = new MovieRepository();
+            //var viewMov = repo.GetMovie(viewMovie);
+            var viewMov = repo.GetMovies(movieTitle);
+            return View(viewMov);
         }
 
         public IActionResult Privacy()

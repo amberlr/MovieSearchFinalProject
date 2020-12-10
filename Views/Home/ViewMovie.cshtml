@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IEnumerable<MovieModel>
+
+<h3>@Model.FirstOrDefault().Title Information</h3>
+
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Poster</th>
+    </tr>
+
+    <tr>
+        <td>@Model.FirstOrDefault().Title</td>
+        <td>@Model.FirstOrDefault().Year</td>
+        @*<td><div><img src="https://www.google.co.in/images/srpr/logo11w.png" /></div></td>*@
+        <td><div><img src="@Model.FirstOrDefault().Poster" /></div></td>
+    </tr>
+
+</table>
