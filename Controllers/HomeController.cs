@@ -25,7 +25,7 @@ namespace MovieDatabaseProject.Controllers
             return View();
         }
 
-        public IActionResult Search(string movieTitle)
+        public IActionResult Search(string userInput)
         {
             //var mov = new MovieModel();
             //mov.Title = movieName;
@@ -36,7 +36,8 @@ namespace MovieDatabaseProject.Controllers
 
 
             var repo = new MovieRepository();
-            var movies = repo.GetMovies(movieTitle);
+            var movies = repo.GetMovies(userInput);
+            ViewData["userInput"] = userInput;
 
             return View(movies);
 

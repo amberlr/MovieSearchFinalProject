@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using aspcore_identity_without_efcore.Identity;
-using aspcore_identity_without_efcore.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MovieDatabaseProject.Models;
+using MySql.Data.MySqlClient;
 
 namespace MovieDatabaseProject
 {
@@ -27,8 +27,16 @@ namespace MovieDatabaseProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IDbConnection>((s) => //for dapper
+            {
+                IDbConnection conn = new MySqlConnection(Configuration.GetConnectionString("moviesdb"));
+                conn.Open();
+                return conn;
+            });
+
+            services.AddTransient<IRegisterRepository, RegisterRepository>();
+
             services.AddControllersWithViews();
-            //services.AddRazorPages(); //to add authentication
 
             //services.AddIdentity<ApplicationUser, ApplicationUserRole>() //for identity stuff
             //.AddUserStore<CustomUserStore>()
@@ -56,8 +64,6 @@ namespace MovieDatabaseProject
 
             app.UseAuthorization();
 
-            //app.UseAuthentication(); //authentication
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -67,13 +73,6 @@ namespace MovieDatabaseProject
                 endpoints.MapControllerRoute(
                    name: "search",
                    pattern: "{controller=Home}/{action=Search}/{movieTitle?}");
-
-                ////authentication:
-                //endpoints.MapControllerRoute(
-                //    name: "default",
-                //    pattern: "{controller=Home}/{action=Index}/{id?}");
-                //endpoints.MapRazorPages();
-
             });
 
 
