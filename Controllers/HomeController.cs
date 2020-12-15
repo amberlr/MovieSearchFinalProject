@@ -19,36 +19,51 @@ namespace MovieDatabaseProject.Controllers
             _logger = logger;
         }
 
-        //private readonly IMovieRepository repo;
-
-        //public HomeController(IMovieRepository repo)
-        //{
-        //    this.repo = repo;
-        //}
-
         public IActionResult Index()
         {
-            var movie = new MovieModel();
-            return View(movie);
+            //var movie = new MovieModel();
+            return View();
         }
 
-        public IActionResult Search(MovieModel movie)
+        public IActionResult Search(string movieTitle)
         {
+            //var mov = new MovieModel();
+            //mov.Title = movieName;
+            //var repo = new MovieRepository();
+            //var movies = repo.GetMovies(movieName);
+
+            //return View(movies);
+
+
             var repo = new MovieRepository();
-            var movies = repo.GetMovies(movie.Title);
+            var movies = repo.GetMovies(movieTitle);
 
             return View(movies);
 
         }
-        public IActionResult ViewMovie(string movieTitle)
+        public IActionResult ViewMovie(string movieTitle, string imdbID)
         {
             var repo = new MovieRepository();
-            //var viewMov = repo.GetMovie(viewMovie);
-            var viewMov = repo.GetMovies(movieTitle);
-            return View(viewMov);
+            var movies = repo.GetMovies(movieTitle); //I could technically put lines 39 thru 51 in its own method
+
+            var movie = new MovieModel();
+
+            foreach(var mov in movies)
+            {
+                if(mov.imdbID == imdbID)
+                {
+                    movie = mov;
+                }
+            }
+            return View(movie);
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult Login()
         {
             return View();
         }

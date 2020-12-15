@@ -51,7 +51,14 @@ namespace MovieDatabaseProject
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                   name: "search",
+                   pattern: "{controller=Home}/{action=Search}/{movieTitle?}");
+
             });
+
+
         }
     }
 }

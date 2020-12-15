@@ -1,15 +1,4 @@
 ﻿
-
-@*add the at model movie model when you want to use this*@
-<!--<div class="text-center">
-    <h1 class="display-4">Search For A Movie</h1>
-
-    <input id="SearchBox" type="text" placeholder="type here" name="value" />
-    <button class="btn-primary" type="submit">Submit</button>-->
-@*<input id="submit" type="submit" name="Search" />*@
-
-<!--</div>-->
-
 @{
     ViewData["Title"] = "Movie Search";
 }
@@ -17,50 +6,179 @@
 
 @model MovieModel
 
-@using (Html.BeginForm("Search", "Home", "Get"))
+@using (Html.BeginForm("Search", "Home", FormMethod.Get))
 {
-<div class="text-center">
-    <h1 class="display-4">Search For A Movie</h1>
-
-    <label class="control-label"></label>
-    <input type="text" name="Title" class="form-control" value="" />
-
-    <input type="submit" value="Search" class="btn btn-primary" />
-</div>
+    <div class="text-center">
+        <h1 class="display-4">Personal Favorites</h1>
+        <p></p>
+    </div>
 }
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-        <div class="item active">
-            <img src="la.jpg" alt="Los Angeles">
+<!--<label class="control-label"></label>
+<input type="search" name="movieTitle" class="form-control" placeholder="Search" />
+<p></p>-->
+@*<input type="submit" value="Search" class="btn btn-primary" />*@
+<!--</div>
+}-->
+@*@using (Html.BeginForm("Search", "Home", "Get"))
+    {
+        <div id="sb-search" class="sb-search">
+            <form id="click">
+                <input name="movieTitle" type="search" placeholder="Search">
+            </form>
         </div>
+    }*@
 
-        <div class="item">
-            <img src="chicago.jpg" alt="Chicago">
-        </div>
 
-        <div class="item">
-            <img src="ny.jpg" alt="New York">
-        </div>
-    </div>
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/2990a424c1.js" crossorigin="anonymous"></script>
 
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left"></span>
+
+<!--Carousel Wrapper-->
+<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+    <!--Controls-->
+
+    <a class="carousel-control-prev" href="#multi-item-example" role="button" data-slide="prev" style="left: -70px">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
     </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right"></span>
+    <a class="carousel-control-next" href="#multi-item-example" role="button" data-slide="next" style="right: -70px">
+        <span class="carousel-control-next-icon" style="background-color: black" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
-</div>
+
+    <!--/.Controls-->
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+
+        <!--First slide-->
+        <div class="carousel-item active">
+
+            <div class="col-md-3" style="float:left">
+                <div class="card mb-2">
+                    <img class="card-img-top"
+                         src="/images/the thing.jpg" alt="Card image cap"> @*movie*@
+                        <div class="card-body">
+                            <h4 class="card-title" style="font-size: 20px">The Thing</h4> @*how do I get the title to fit?*@
+                            <p class="card-text">
+                                A research team in Antarctica is hunted by a shape-shifting alien that assumes the appearance of its victims.
+                            </p>
+                            <a class="btn btn-primary" href="https://www.imdb.com/title/tt0084787/?ref_=fn_al_tt_2">More Info</a>  @*trailer?*@
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3" style="float:left">
+                    <div class="card mb-2">
+                        <img class="card-img-top" style="width: 160px ; height: 240px"
+                             src="/images/nightcrawler3.jpg" alt="Card image cap"> @*movie*@
+                            <div class="card-body">
+                                <h4 class="card-title" style="font-size: 20px">Nightcrawler</h4>
+                                <p class="card-text">
+                                    When Louis Bloom, a con man desperate for work, muscles into the world of L.A. crime journalism, he blurs the...
+                                </p>
+                                <a class="btn btn-primary" href="https://www.imdb.com/title/tt2872718/?ref_=fn_al_tt_1">More Info</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3" style="float:left">
+                        <div class="card mb-2">
+                            <img class="card-img-top"
+                                 src="/images/akira.jpg" alt="Card image cap"> @*movie*@
+                                <div class="card-body">
+                                    <h4 class="card-title" style="font-size: 20px">Akira</h4>
+                                    <p class="card-text">
+                                        A secret military project endangers Neo-Tokyo when it turns a biker gang member into a rampaging psychic...
+                                    </p>
+                                    <a class="btn btn-primary" href="https://www.imdb.com/title/tt0094625/?ref_=fn_al_tt_1">More Info</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3" style="float:left">
+                            <div class="card mb-2">
+                                <img class="card-img-top"
+                                     src="/images/the departed.jpg" alt="Card image cap"> @*movie*@
+                                    <div class="card-body">
+                                        <h4 class="card-title" style="font-size: 20px">The Departed</h4>
+                                        <p class="card-text">
+                                            An undercover cop and a mole in the police attempt to identify each other while infiltrating an...
+                                        </p>
+                                        <a class="btn btn-primary" href="https://www.imdb.com/title/tt0407887/?ref_=fn_al_tt_1">More Info</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--/.First slide-->
+                        <!--Second slide-->
+                        <div class="carousel-item">
+
+                            <div class="col-md-3" style="float:left">
+                                <div class="card mb-2">
+                                    <img class="card-img-top"
+                                         src="/images/alien.jpg" alt="Card image cap"> @*movie*@
+                                        <div class="card-body">
+                                            <h4 class="card-title" style="font-size: 20px">Alien</h4>
+                                            <p class="card-text">
+                                                After a space merchant vessel receives an unknown transmission as a distress call, one of the crew...
+                                            </p>
+                                            <a class="btn btn-primary" href="https://www.imdb.com/title/tt0078748/?ref_=fn_al_tt_1">More Info</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3" style="float:left">
+                                    <div class="card mb-2">
+                                        <img class="card-img-top"
+                                             src="/images/drive.jpg" alt="Card image cap"> @*movie*@
+                                            <div class="card-body">
+                                                <h4 class="card-title" style="font-size: 20px">Drive</h4>
+                                                <p class="card-text">
+                                                    A mysterious Hollywood stuntman and mechanic moonlights as a getaway driver and finds himself...
+                                                </p>
+                                                <a class="btn btn-primary" href="https://www.imdb.com/title/tt0780504/?ref_=fn_al_tt_1">More Info</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3" style="float:left">
+                                        <div class="card mb-2">
+                                            <img class="card-img-top"
+                                                 src="/images/land before time.jpg" alt="Card image cap"> @*movie*@
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="font-size: 20px">The Land Before Time</h4>
+                                                    <p class="card-text">
+                                                        An orphaned brontosaurus teams up with other young dinosaurs in order to reunite with...
+                                                    </p>
+                                                    <a class="btn btn-primary" href="https://www.imdb.com/title/tt0095489/?ref_=nv_sr_srsg_0">More Info</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3" style="float:left">
+                                            <div class="card mb-2">
+                                                <img class="card-img-top"
+                                                     src="/images/no country for old men.jpg" alt="Card image cap"> @*movie*@
+                                                    <div class="card-body">
+                                                        <h4 class="card-title" style="font-size: 20px">No Country For Old Men</h4>
+                                                        <p class="card-text">
+                                                            Violence and mayhem ensue after a hunter stumbles upon a drug deal gone wrong and more...
+                                                        </p>
+                                                        <a class="btn btn-primary" href="https://www.imdb.com/title/tt0477348/?ref_=nv_sr_srsg_0">More Info</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!--/.Second slide-->
 
 
+
+                                    </div>
+                                    <!--/.Slides-->
+
+                                </div>
+                                <!--/.Carousel Wrapper-->

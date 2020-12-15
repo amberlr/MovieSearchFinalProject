@@ -10,21 +10,15 @@ namespace MovieDatabaseProject
 {
     public class MovieRepository : IMovieRepository
     {
+        private static readonly string _apiKey = System.IO.File.ReadAllText("api.txt");
+
         public IEnumerable<MovieModel> GetMovies(string userInput)
         {
             var client = new RestClient($"https://movie-database-imdb-alternative.p.rapidapi.com/?s={ userInput }&page=1&r=json%22");
             var request = new RestRequest(Method.GET);
-            request.AddHeader("x-rapidapi-key", "8728f075a0msh30232edd24e8879p118906jsn346f28102e77");
+            request.AddHeader("x-rapidapi-key", _apiKey);
             request.AddHeader("x-rapidapi-host", "movie-database-imdb-alternative.p.rapidapi.com");
             IRestResponse response = client.Execute(request);
-
-            //other api
-            //var client = new RestClient($"https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/{ userInput }");
-            //var request = new RestRequest(Method.GET);
-            //request.AddHeader("x-rapidapi-key", "8728f075a0msh30232edd24e8879p118906jsn346f28102e77");
-            //request.AddHeader("x-rapidapi-host", "imdb-internet-movie-database-unofficial.p.rapidapi.com");
-            //IRestResponse response = client.Execute(request);
-
 
             var movies = JObject.Parse(response.Content).GetValue("Search");
 
@@ -47,30 +41,11 @@ namespace MovieDatabaseProject
                 //}
                 movie.Year = (string)mov["Year"];
                 movie.Poster = (string)mov["Poster"];
-                movie.imdbId = (string)mov["imdbId"];
+                movie.imdbID = (string)mov["imdbID"]; //has to be same as the json 
 
                 list.Add(movie); //add the values to movie
             }
             return list;
-
-            //if I want to try the other api:
-            //var movies = JObject.Parse(response.Content).GetValue("Search");
-
-            //var list = new List<MovieModel>();
-
-            //foreach (var mov in movies)
-            //{
-            //    var movie = new MovieModel();
-            //    movie.Title = (string)mov["Title"];
-            //    movie.Year = (string)mov["Year"];
-            //    movie.Length = (string)mov["Length"];
-            //    movie.Rating = (string)mov["Rating"];
-            //    movie.Poster = (string)mov["Poster"];
-            //    movie.Plot = (string)mov["Plot"];
-
-            //    list.Add(movie);
-            //}
-            //return list;
         }
 
         //public MovieModel GetMovie(MovieModel movie) //do I need to do IEnumerable again since I want to return title, year, poster and add to list?

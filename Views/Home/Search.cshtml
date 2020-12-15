@@ -18,8 +18,7 @@
     @foreach (var movie in Model)
     {
         <tr height="100px">
-            <td>@Html.ActionLink(@movie.Title, "ViewMovie", new { movieTitle = @movie.Title })</td>
-            @*<td>@Html.ActionLink(@movie.Title, "https://www.imdb.com/title/tt12292428/", new { movieTitle = @movie.Title })</td>*@
+            <td>@Html.ActionLink(@movie.Title, "ViewMovie", new { movieTitle = @movie.Title , imdbID = @movie.imdbID })</td>
             <td>@movie.Year</td>
             <td><div><img src="@movie.Poster" /></div></td>
         </tr>

@@ -1,6 +1,6 @@
 ﻿html {
     /*background-color: darkslategrey !important;*/
-    background-image: url("/images/image.jpg") !important;
+    background-image: url("/images/moviewallpaper2.jpg") !important;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -9,7 +9,7 @@
 }
 
 body {
-    /*background-color: darkslategrey;*/
+    background-color: inherit;
     border-radius: 25px;
     color: #666;
     font: 90%/180% Arial, Helvetica, sans-serif;
@@ -111,4 +111,28 @@ input {
 
 #click input::-webkit-input-placeholder {
     color: transparent;
+}
+
+.carousel-control-prev .sr-only {
+    right: 0 !important;
+    margin-left: 0 !important;}
+
+.carousel-control-next .sr-only {
+    left: 0 !important;
+    margin-right: 0 !important;
+    //or you can increase this
+}
+
+.carousel-control-prev-icon {
+    background-color: black !important;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%231b6ec2' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+}
+
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%231b6ec2' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+}
+
+.card-body {
+    background-color: black;
+    border-bottom-color: black;
 }

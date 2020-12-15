@@ -4,9 +4,9 @@
 @{
 }
 
-@model IEnumerable<MovieModel>
+@model MovieModel
 
-<h3>@Model.FirstOrDefault().Title Information</h3>
+<h3>@Model.Title Information</h3>
 
 <table class="table">
     <tr>
@@ -16,10 +16,10 @@
     </tr>
 
     <tr>
-        <td>@Model.FirstOrDefault().Title</td>
-        <td>@Model.FirstOrDefault().Year</td>
+        <td>@Model.Title</td>
+        <td>@Model.Year</td>
         @*<td><div><img src="https://www.google.co.in/images/srpr/logo11w.png" /></div></td>*@
-        <td><div><img src="@Model.FirstOrDefault().Poster" /></div></td>
+        <td><div><img src="@Model.Poster" /></div></td>
     </tr>
 
 </table>
