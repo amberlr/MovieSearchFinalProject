@@ -6,18 +6,18 @@
 
 @model MovieModel
 
-<h3>@Model.Title Information</h3>
+<h3 style="color:white">@Model.Title Information</h3>
 
 <table class="table">
     <tr>
-        <th>Title</th>
-        <th>Year</th>
-        <th>Poster</th>
+        <th style="color: white">Title</th>
+        <th style="color: white">Year</th>
+        <th style="color: white">Poster</th>
     </tr>
 
     <tr>
-        <td>@Model.Title</td>
-        <td>@Model.Year</td>
+        <td style="color: white">@Model.Title</td>
+        <td style="color: white">@Model.Year</td>
         @*<td><div><img src="https://www.google.co.in/images/srpr/logo11w.png" /></div></td>*@
         <td><div><img src="@Model.Poster" /></div></td>
     </tr>

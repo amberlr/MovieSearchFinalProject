@@ -2,12 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using aspcore_identity_without_efcore.Identity;
+using aspcore_identity_without_efcore.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MovieDatabaseProject.Models;
 
 namespace MovieDatabaseProject
 {
@@ -24,6 +28,12 @@ namespace MovieDatabaseProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            //services.AddRazorPages(); //to add authentication
+
+            //services.AddIdentity<ApplicationUser, ApplicationUserRole>() //for identity stuff
+            //.AddUserStore<CustomUserStore>()
+            //.AddRoleStore<CustomRoleStore>()
+            //.AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +56,8 @@ namespace MovieDatabaseProject
 
             app.UseAuthorization();
 
+            //app.UseAuthentication(); //authentication
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -55,6 +67,12 @@ namespace MovieDatabaseProject
                 endpoints.MapControllerRoute(
                    name: "search",
                    pattern: "{controller=Home}/{action=Search}/{movieTitle?}");
+
+                ////authentication:
+                //endpoints.MapControllerRoute(
+                //    name: "default",
+                //    pattern: "{controller=Home}/{action=Index}/{id?}");
+                //endpoints.MapRazorPages();
 
             });
 

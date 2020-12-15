@@ -6,21 +6,28 @@
 
 @model IEnumerable<MovieModel>
 
-<h2>Movies</h2>
+<h2 style="color: white">Movies</h2>
+@if (Model == null)
+{
+    <p>@Model not found. Please try again.</p> @*how can I put the movie title not found?*@
+}
+else
+{
 
 <table class="table" height="100px" style="border-radius: 25px;">
     <tr>
-        <th>Title</th>
-        <th>Year</th>
-        <th>Poster</th>
+        <th style="color: white">Title</th>
+        <th style="color: white">Year</th>
+        <th style="color: white">Poster</th>
     </tr>
 
     @foreach (var movie in Model)
     {
         <tr height="100px">
-            <td>@Html.ActionLink(@movie.Title, "ViewMovie", new { movieTitle = @movie.Title , imdbID = @movie.imdbID })</td>
-            <td>@movie.Year</td>
+            <td style="color: white"><b>@Html.ActionLink(@movie.Title, "ViewMovie", new { movieTitle = @movie.Title, imdbID = @movie.imdbID })</b></td>
+            <td style="color: white">@movie.Year</td>
             <td><div><img src="@movie.Poster" /></div></td>
         </tr>
     }
 </table>
+}

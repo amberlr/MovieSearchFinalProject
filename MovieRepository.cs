@@ -24,9 +24,14 @@ namespace MovieDatabaseProject
 
             var list = new List<MovieModel>();
 
+            if(movies == null)
+            {
+                return null;
+            }
+
             foreach (var mov in movies)
             //mov represents:    while movie represents:  
-            {
+            {                
                 var movie = new MovieModel();
                 movie.Title = (string)mov["Title"];
 
