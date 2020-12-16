@@ -6,26 +6,27 @@
 
 @model IEnumerable<MovieModel>
 
-<h2 style="color: white ; font-family: fantasy">Movies</h2>
+<h2 style="color: white ; font-family: fantasy ; text-align: center">Movies Containing "@ViewData["userInput"]"</h2>
 @if (Model == null)
 {
-    <p>@ViewData["userInput"] not found. Please try again.</p> @*how can I put the movie title not found?*@
+    <p></p>
+    <p style="color: crimson ; font-size: large ; font-family: Arial ; text-align: center">@ViewData["userInput"] not found. Please try again.</p>
 }
 else
 {
 
 <table class="table" height="100px" style="border-radius: 25px;">
     <tr>
-        <th style="color: white">Title</th>
-        <th style="color: white">Year</th>
-        <th style="color: white">Poster</th>
+        <th style="color: lemonchiffon ; font-size: large">Title</th>
+        <th style="color: lemonchiffon ; font-size: large">Year</th>
+        <th style="color: lemonchiffon ; font-size: large">Poster</th>
     </tr>
 
     @foreach (var movie in Model)
     {
         <tr height="100px">
-            <td style="color: white">@Html.ActionLink(@movie.Title, "ViewMovie", new { movieTitle = @movie.Title, imdbID = @movie.imdbID })</td>
-            <td style="color: white">@movie.Year</td>
+            <td style="color: white ; font-size: medium">@Html.ActionLink(@movie.Title, "ViewMovie", new { movieTitle = @movie.Title, imdbID = @movie.imdbID })</td>
+            <td style="color: white ; font-size: medium">@movie.Year</td>
             <td><div><img src="@movie.Poster" /></div></td>
         </tr>
     }

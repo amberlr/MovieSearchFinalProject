@@ -9,5 +9,6 @@ namespace MovieDatabaseProject
     public interface IMovieRepository
     {
         public IEnumerable<MovieModel> GetMovies(string userInput);
+        //public MovieInfoModel GetMovieInfo(string movieTitle);
     }
 }

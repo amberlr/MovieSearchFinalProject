@@ -1,24 +1,26 @@
 ﻿@model RegisterModel
-<h2>Register</h2>
-@using (Html.BeginForm("RegisterUserToDatabase", "Login", "Post"))
+<h2 style="color: white ; font-family: fantasy ; text-align: center">Register</h2>
+@using (Html.BeginForm("RegisterUserToDatabase", "Register", FormMethod.Post)) @*change to Index, Register later*@
 {
     <input asp-for="UserID" type="hidden" value="" />
-    <label asp-for="Username" class="control-label">Username</label>
+    <label asp-for="Username" class="control-label" style="color:whitesmoke">Username</label>
     <input type="text" name="Name" class="form-control" value="" />
 
-    <label asp-for="Password" class="control-label">Password</label>
+    <label asp-for="Password" class="control-label" style="color:whitesmoke">Password</label>
     <input type="text" name="Price" class="form-control" />
 
-    <label asp-for="FirstName" class="control-label">First Name</label>
+    <label asp-for="FirstName" class="control-label" style="color:whitesmoke">First Name</label>
     <input type="text" name="Price" class="form-control" />
 
-    <label asp-for="LastName" class="control-label">Last Name</label>
+    <label asp-for="LastName" class="control-label" style="color:whitesmoke">Last Name</label>
     <input type="text" name="Price" class="form-control" />
 
-    <label asp-for="EmailID" class="control-label">Email</label>
+    <label asp-for="EmailID" class="control-label" style="color:whitesmoke">Email</label>
     <input type="text" name="Price" class="form-control" />
 
     <div class="form-group">
     </div>
-    <input type="submit" value="Create" class="btn btn-primary" />
+    <div style="text-align:center;">
+        <input type="submit" value="Create" class="btn btn-primary"/>
+    </div>
 }

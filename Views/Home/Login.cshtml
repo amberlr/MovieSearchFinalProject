@@ -14,14 +14,14 @@
 
         <form>
             <div class="form-group row">
-                <label class="col-sm-3 col-form-label" for="email">Email Address</label>
+                <label class="col-sm-3 col-form-label" for="email" style="color: whitesmoke">Email Address</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" id="email">
                 </div>
             </div>
 
             <div class="form-group row">
-                <label class="col-sm-3 col-form-label" for="password">Password</label>
+                <label class="col-sm-3 col-form-label" for="password" style="color: whitesmoke">Password</label>
                 <div class="col-sm-9">
                     <input type="password" class="form-control" id="password">
                 </div>
@@ -34,11 +34,12 @@
             </div>
 
             <p></p><p></p>
-            <p style="text-align: center">Don't have an account? Register below:</p>
+            <p style="text-align: center ; font-family: Arial ; font-size: large ; color: aliceblue">Don't have an account? Register below:</p>
 
-            <div class="row">
-                <div class="col-sm-9 offset-sm-3"> @*how do I put it in the middle?*@
-                    <button type="submit" class="btn btn-primary"><a href="/Register/">Register Here!</a></button> @*do I need to change path?*@
+            <div style="text-align:center">
+                <div> @*how do I put it in the middle?*@
+                    @*<button type="submit" class="btn btn-primary"><a href="/Register/">Register Here!</a></button>*@
+                    <button type="submit" class="btn btn-primary" formaction="/Register/">Register Here!</button> @*this is good but why ? at the end?*@
                 </div>
             </div>
 

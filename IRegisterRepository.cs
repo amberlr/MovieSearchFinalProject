@@ -10,5 +10,7 @@ namespace MovieDatabaseProject
     {
         public IEnumerable<RegisterModel> GetAllUsers();
         public void RegisterUser(RegisterModel registerUser);
+        //not sure if needed:
+        public RegisterModel AssignUser();
     }
 }
