@@ -12,6 +12,8 @@ namespace MovieDatabaseProject
     {
         private static readonly string _apiKey = System.IO.File.ReadAllText("api.txt");
 
+        private static readonly string _api2Key = System.IO.File.ReadAllText("api2.txt");
+
         public IEnumerable<MovieModel> GetMovies(string userInput)
         {
             var client = new RestClient($"https://movie-database-imdb-alternative.p.rapidapi.com/?s={ userInput }&page=1&r=json%22");
@@ -56,7 +58,7 @@ namespace MovieDatabaseProject
         {
             var client = new RestClient($"https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/{ id }");
             var request = new RestRequest(Method.GET);
-            request.AddHeader("x-rapidapi-key", "8728f075a0msh30232edd24e8879p118906jsn346f28102e77");
+            request.AddHeader("x-rapidapi-key", _api2Key);
             request.AddHeader("x-rapidapi-host", "imdb-internet-movie-database-unofficial.p.rapidapi.com");
             IRestResponse response = client.Execute(request);
 
