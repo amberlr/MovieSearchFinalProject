@@ -25,7 +25,8 @@ else
     @foreach (var movie in Model)
     {
         <tr height="100px">
-            <td style="color: white ; font-size: medium">@Html.ActionLink(@movie.Title, "ViewMovie", new { movieTitle = @movie.Title, imdbID = @movie.imdbID })</td>
+            @*<td style="color: white ; font-size: medium">@Html.ActionLink(@movie.Title, "ViewMovie", new { movieTitle = @movie.Title, imdbID = @movie.imdbID })</td>*@
+            <td style="color: white ; font-size: medium">@Html.ActionLink(@movie.Title, "ViewMovie", new { id = @movie.imdbID })</td>
             <td style="color: white ; font-size: medium">@movie.Year</td>
             <td><div><img src="@movie.Poster" /></div></td>
         </tr>

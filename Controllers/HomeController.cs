@@ -42,21 +42,29 @@ namespace MovieDatabaseProject.Controllers
             return View(movies);
 
         }
-        public IActionResult ViewMovie(string movieTitle, string imdbID)
+        //public IActionResult ViewMovie(string movieTitle, string imdbID)
+        //{
+        //    var repo = new MovieRepository();
+        //    var movies = repo.GetMovies(movieTitle); //I could technically put lines 39 thru 51 in its own method
+
+        //    var movie = new MovieModel();
+
+        //    foreach(var mov in movies)
+        //    {
+        //        if(mov.imdbID == imdbID)
+        //        {
+        //            movie = mov;
+        //        }
+        //    }
+        //    return View(movie);
+        //}
+
+        public IActionResult ViewMovie(string id)
         {
             var repo = new MovieRepository();
-            var movies = repo.GetMovies(movieTitle); //I could technically put lines 39 thru 51 in its own method
+            var oneMovie = repo.GetMovieInfo(id);
 
-            var movie = new MovieModel();
-
-            foreach(var mov in movies)
-            {
-                if(mov.imdbID == imdbID)
-                {
-                    movie = mov;
-                }
-            }
-            return View(movie);
+            return View(oneMovie);
         }
 
         public IActionResult Privacy()

@@ -52,28 +52,30 @@ namespace MovieDatabaseProject
             return list;
         }
 
-        //public MovieInfoModel GetMovieInfo(string movieTitle)
-        //{
-        //    var client = new RestClient($"https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/{ movieTitle }");
-        //    var request = new RestRequest(Method.GET);
-        //    request.AddHeader("x-rapidapi-key", "8728f075a0msh30232edd24e8879p118906jsn346f28102e77");
-        //    request.AddHeader("x-rapidapi-host", "imdb-internet-movie-database-unofficial.p.rapidapi.com");
-        //    IRestResponse response = client.Execute(request);
+        public MovieInfoModel GetMovieInfo(string id)
+        {
+            var client = new RestClient($"https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/{ id }");
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("x-rapidapi-key", "8728f075a0msh30232edd24e8879p118906jsn346f28102e77");
+            request.AddHeader("x-rapidapi-host", "imdb-internet-movie-database-unofficial.p.rapidapi.com");
+            IRestResponse response = client.Execute(request);
 
-        //    var movie = JObject.Parse(response.Content);
+            var movie = JObject.Parse(response.Content);
 
-        //    var mov = new MovieInfoModel();
-        //    mov.Title = (string)movie["title"];
-        //    mov.Year = (string)movie["year"];
-        //    mov.Length = (string)movie["length"];
-        //    mov.Rating = (string)movie["rating"];
-        //    mov.Poster = (string)movie["poster"];
-        //    mov.Plot = (string)movie["plot"];
-        //    mov.imdbID = (string)movie["id"];
+            var mov = new MovieInfoModel();
+            mov.Title = (string)movie["title"];
+            mov.Year = (string)movie["year"];
+            mov.Length = (string)movie["length"];
+            mov.Rating = (string)movie["rating"];
+            mov.Poster = (string)movie["poster"];
+            mov.Plot = (string)movie["plot"];
+            mov.imdbID = (string)movie["id"];
 
-        //    if (mov.imdbID == movie.imdb)
-        //    //imdb in MovieModel == imdb in MovieInfoModel.. return title, year, length, rating, plot
-        //}
+            return mov;
+        }
+
+
+
 
 
 

@@ -4,7 +4,7 @@
 @{
 }
 
-@model MovieModel
+@model MovieInfoModel
 
 <h3 style="color:white ; font-family: fantasy ; text-align: center">@Model.Title Information</h3>
 
@@ -12,13 +12,19 @@
     <tr>
         <th style="color: lemonchiffon ; font-size: large">Title</th>
         <th style="color: lemonchiffon ; font-size: large">Year</th>
+        <th style="color: lemonchiffon ; font-size: large">Length</th>
+        <th style="color: lemonchiffon ; font-size: large">Rating</th>
         <th style="color: lemonchiffon ; font-size: large">Poster</th>
+        <th style="color: lemonchiffon ; font-size: large">Plot</th>
     </tr>
 
     <tr>
         <td style="color: white ; font-size: medium">@Model.Title</td>
         <td style="color: white ; font-size: medium">@Model.Year</td>
+        <td style="color: white ; font-size: medium">@Model.Length</td>
+        <td style="color: white ; font-size: medium">@Model.Rating</td>
         <td><div><img src="@Model.Poster" /></div></td>
+        <td style="color: white ; font-size: medium">@Model.Plot</td>
     </tr>
 
 </table>
