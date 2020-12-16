@@ -18,5 +18,8 @@ namespace MovieDatabaseProject.Models
         public string Poster { get; set; }
         public string Plot { get; set; }
         public string imdbID { get; set; }
+
+        public object Trailer { get; set; }
+        public string Link { get; set; }
     }
 }

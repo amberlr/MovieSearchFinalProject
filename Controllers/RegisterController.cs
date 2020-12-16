@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MovieDatabaseProject.Models;
+using System.Net;
+using System.Net.Mail;
 
 namespace MovieDatabaseProject.Controllers
 {
@@ -33,7 +35,7 @@ namespace MovieDatabaseProject.Controllers
         {
             repo.RegisterUser(registerUser);
 
-            return RedirectToAction("Email"); //not sure yet
+            return RedirectToAction("Email");
         }
     }
 }

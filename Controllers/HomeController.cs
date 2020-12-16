@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MovieDatabaseProject.Models;
@@ -81,6 +84,47 @@ namespace MovieDatabaseProject.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        //below is where I added ability to email via contact page
+        public async Task<ActionResult> email(IFormCollection form)
+        {
+            var name = form["sname"];
+            var email = form["semail"];
+            var messages = form["smessage"];
+            var phone = form["sphone"];
+            var x = await SendEmail(name, email, messages, phone);
+            if (x == "sent")
+                ViewData["esent"] = "Your Message Has Been Sent";
+            return RedirectToAction("Contact");
+        }
+        private async Task<string> SendEmail(string name, string email, string messages, string phone)
+        {
+            var message = new MailMessage();
+            message.To.Add(new MailAddress("ambertesttime@outlook.com")); // replace with receiver's email id //ok how do I make this look at what user types?
+            message.From = new MailAddress("ambertesttime@outlook.com"); // replace with sender's email id     
+            message.Subject = "Message From" + email;
+            message.Body = "Name: " + name + "\nFrom: " + email + "\nPhone: " + phone + "\n" + messages;
+            message.IsBodyHtml = true;
+            using (var smtp = new SmtpClient())
+            {
+                var credential = new NetworkCredential
+                {
+                    UserName = "ambertesttime@outlook.com", // replace with sender's email id     
+                    Password = "test357dragons@pass" // replace with password //how do I hide password?
+                };
+                smtp.Credentials = credential;
+                smtp.Host = "smtp-mail.outlook.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+                await smtp.SendMailAsync(message);
+                return "sent";
+            }
         }
     }
 }

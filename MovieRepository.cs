@@ -49,7 +49,7 @@ namespace MovieDatabaseProject
                 movie.Poster = (string)mov["Poster"];
                 movie.imdbID = (string)mov["imdbID"]; //has to be same as the json 
 
-                list.Add(movie); //add the values to movie
+                list.Add(movie);
             }
             return list;
         }
@@ -72,32 +72,32 @@ namespace MovieDatabaseProject
             mov.Poster = (string)movie["poster"];
             mov.Plot = (string)movie["plot"];
             mov.imdbID = (string)movie["id"];
+            mov.Trailer = movie["trailer"]; 
+            
+            if(mov.Trailer != null) //haven't been able to get this to work
+            {
+                var trailer = JObject.Parse(response.Content).GetValue("trailer");
+                var link = new MovieInfoModel();
+                link.Link = (string)trailer["link"];
+            }
 
             return mov;
+
         }
-
-
-
-
-
-
-        //public MovieModel GetMovie(MovieModel movie) //do I need to do IEnumerable again since I want to return title, year, poster and add to list?
+        //public MovieInfoModel GetTrailer(string userInput)
         //{
-        //    //do I need to do the below again? it doesn't like response.content, but I don't know if that means I need to include api data again as well
+        //    var client = new RestClient($"https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/{ userInput }");
+        //    var request = new RestRequest(Method.GET);
+        //    request.AddHeader("x-rapidapi-key", _api2Key);
+        //    request.AddHeader("x-rapidapi-host", "imdb-internet-movie-database-unofficial.p.rapidapi.com");
+        //    IRestResponse response = client.Execute(request);
 
-        //    //var viewOneMovie = JObject.Parse(response.content).GetValue("View");
+        //    var movie = JObject.Parse(response.Content).GetValue("trailer");
 
-
-        //    //foreach (var viewMov in viewList)
-        //    //{
-        //    //    var mov = new MovieModel();
-        //    //    mov.Title = (string)viewMov["Title"];
-        //    //    mov.Year = (string)viewMov["Year"];
-        //    //    mov.Poster = (string)viewMov["Poster"];
-        //    //    viewList.Add(mov);
-        //    //}
-        //    //return viewList;
-
+        //    var mov = new MovieInfoModel();
+        //    mov.Trailer = (string)movie["link"];
+        //    return mov;
         //}
+
     }
 }

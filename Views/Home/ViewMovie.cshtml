@@ -14,8 +14,6 @@
         <th style="color: lemonchiffon ; font-size: large">Year</th>
         <th style="color: lemonchiffon ; font-size: large">Length</th>
         <th style="color: lemonchiffon ; font-size: large">Rating</th>
-        <th style="color: lemonchiffon ; font-size: large">Poster</th>
-        <th style="color: lemonchiffon ; font-size: large">Plot</th>
     </tr>
 
     <tr>
@@ -23,8 +21,28 @@
         <td style="color: white ; font-size: medium">@Model.Year</td>
         <td style="color: white ; font-size: medium">@Model.Length</td>
         <td style="color: white ; font-size: medium">@Model.Rating</td>
-        <td><div><img src="@Model.Poster" /></div></td>
-        <td style="color: white ; font-size: medium">@Model.Plot</td>
     </tr>
 
+</table>
+
+<table class="table">
+    <tr>
+        <th style="color: lemonchiffon ; font-size: large">Poster</th>
+        <th style="color: lemonchiffon ; font-size: large">Plot</th>
+    </tr>
+
+    <tr>
+        <td><div><img src="@Model.Poster" style="height:100%;width:100%" /></div></td>
+        <td style="color: white ; font-size: medium">@Model.Plot</td>
+    </tr>
+</table>
+
+<table class="table">
+    <tr>
+        <th style="color: lemonchiffon ; font-size: large">Trailer</th>
+    </tr>
+
+    <tr>
+        <td><div><a href="@Model.Link"></a></div></td>
+    </tr>
 </table>

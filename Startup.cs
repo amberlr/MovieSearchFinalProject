@@ -38,10 +38,6 @@ namespace MovieDatabaseProject
 
             services.AddControllersWithViews();
 
-            //services.AddIdentity<ApplicationUser, ApplicationUserRole>() //for identity stuff
-            //.AddUserStore<CustomUserStore>()
-            //.AddRoleStore<CustomRoleStore>()
-            //.AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,8 +70,6 @@ namespace MovieDatabaseProject
                    name: "search",
                    pattern: "{controller=Home}/{action=Search}/{movieTitle?}");
             });
-
-
         }
     }
 }
