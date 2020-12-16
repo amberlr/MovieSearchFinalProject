@@ -22,14 +22,11 @@ namespace MovieDatabaseProject
         }
         public void RegisterUser(RegisterModel registerUser)
         {
-            _conn.Execute("INSERT INTO logininfo (USERNAME, PASSWORD, FIRSTNAME, LASTNAME, EMAILID) VALUES (@username, @password, @firstName, @lastName, @emailID);",
+            _conn.Execute("INSERT INTO logininfo (EMAILID, PASSWORD) VALUES (@emailID, @password);",
                 new
                 {
-                    username = registerUser.Username,
-                    password = registerUser.Password,
-                    firstName = registerUser.FirstName,
-                    lastName = registerUser.LastName,
-                    emailID = registerUser.EmailID
+                    emailID = registerUser.EmailID,
+                    password = registerUser.Password
                 });
         }
         //not sure:

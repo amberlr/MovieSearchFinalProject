@@ -20,7 +20,11 @@ namespace MovieDatabaseProject.Controllers
         {
             return View();
         }
-        public IActionResult InsertUser() //not sure
+        public IActionResult Email()
+        {
+            return View();
+        }
+        public IActionResult RegisterUser() //not sure
         {
             var user = repo.AssignUser();
             return View(user);
