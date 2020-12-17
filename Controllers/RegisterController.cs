@@ -26,6 +26,14 @@ namespace MovieDatabaseProject.Controllers
         {
             return View();
         }
+        public IActionResult TermsOfService()
+        {
+            return View();
+        }
+        public IActionResult WhyRegister()
+        {
+            return View();
+        }
         public IActionResult RegisterUser() //not sure
         {
             var user = repo.AssignUser();

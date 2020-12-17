@@ -1,14 +1,20 @@
 ﻿@model RegisterModel
-<h2 style="color: white ; font-family: fantasy ; text-align: center">Register</h2>
+<h1 style="color: lemonchiffon ; font-family: fantasy ; text-align: center">Register</h1>
+
+<p style="color:inherit"><a href="/Register/WhyRegister">Why register with us?</a></p>
+
 @using (Html.BeginForm("RegisterUserToDatabase", "Register", FormMethod.Post))
 {
     <input asp-for="UserID" type="hidden" value="" />
 
     <label asp-for="EmailID" class="control-label" style="color:whitesmoke">Email</label>
-    <input type="text" name="EmailID" class="form-control" value=""/>
+    <input type="text" name="EmailID" class="form-control" value="" />
 
     <label asp-for="Password" class="control-label" style="color:whitesmoke">Password</label>
-    <input type="password" name="Password" class="form-control" value=""/>
+    <input type="password" name="Password" class="form-control" value="" />
+
+    <p></p>
+    <label><input type="checkbox" name="terms" style="color:whitesmoke"> I agree to the <a href="/Register/TermsOfService">terms of service</a></label>
 
     <div class="form-group">
     </div>

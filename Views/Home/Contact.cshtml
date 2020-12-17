@@ -1,5 +1,7 @@
 ﻿
-<h1>Contact Us</h1>
+<h1 style="color:lemonchiffon">Contact Us</h1>
+
+<p style="color:lemonchiffon">Questions or concerns? Holla at us!</p>
 
 @using (Html.BeginForm("email", "Home", FormMethod.Post))
 {
@@ -23,14 +25,14 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <textarea class="form-control" name="smessage" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                            <textarea class="form-control" style="height:16vh" name="smessage" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-lg-12 text-center">
                         <div id="success"></div>
-                        <button type="submit" class="btn btn-xl" onclick="this.form.submit();">Send Message</button>
+                        <button type="submit" class="btn btn-primary" onclick="this.form.submit();">Send Message</button>
                     </div>
                 </div>
             </form>
