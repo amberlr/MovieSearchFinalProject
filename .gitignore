@@ -11,6 +11,7 @@
 *.sln.docstates
 *api.txt
 *api2.txt
+*emailPass.txt
 *appsettings.json
 
 # User-specific files (MonoDevelop/Xamarin Studio)

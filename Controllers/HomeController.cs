@@ -30,14 +30,6 @@ namespace MovieDatabaseProject.Controllers
 
         public IActionResult Search(string userInput)
         {
-            //var mov = new MovieModel();
-            //mov.Title = movieName;
-            //var repo = new MovieRepository();
-            //var movies = repo.GetMovies(movieName);
-
-            //return View(movies);
-
-
             var repo = new MovieRepository();
             var movies = repo.GetMovies(userInput);
             ViewData["userInput"] = userInput;
@@ -90,6 +82,10 @@ namespace MovieDatabaseProject.Controllers
         {
             return View();
         }
+        public IActionResult ContactEmailSent()
+        {
+            return View();
+        }
 
         //below is where I added ability to email via contact page
         public async Task<ActionResult> email(IFormCollection form)
@@ -100,9 +96,12 @@ namespace MovieDatabaseProject.Controllers
             var phone = form["sphone"];
             var x = await SendEmail(name, email, messages, phone);
             if (x == "sent")
-                ViewData["esent"] = "Your Message Has Been Sent";
-            return RedirectToAction("Contact");
+                ViewData["esent"] = "Your Message Has Been Sent"; //i made a new view.. so do I even need this now?
+            return RedirectToAction("ContactEmailSent");
         }
+
+        private static readonly string _emailKey = System.IO.File.ReadAllText("emailPass.txt");
+
         private async Task<string> SendEmail(string name, string email, string messages, string phone)
         {
             var message = new MailMessage();
@@ -116,7 +115,7 @@ namespace MovieDatabaseProject.Controllers
                 var credential = new NetworkCredential
                 {
                     UserName = "ambertesttime@outlook.com", // replace with sender's email id     
-                    Password = "test357dragons@pass" // replace with password //how do I hide password?
+                    Password = _emailKey // replace with password //how do I hide password?
                 };
                 smtp.Credentials = credential;
                 smtp.Host = "smtp-mail.outlook.com";
