@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using MovieDatabaseProject.Models;
 using System.Net;
 using System.Net.Mail;
+using Microsoft.AspNetCore.Http;
 
 namespace MovieDatabaseProject.Controllers
 {

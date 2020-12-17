@@ -119,7 +119,7 @@ namespace MovieDatabaseProject.Controllers
         {
             var message = new MailMessage();
             message.To.Add(new MailAddress("ambertesttime@outlook.com")); // replace with receiver's email id //ok how do I make this look at what user types?
-            message.From = new MailAddress("ambertesttime@outlook.com"); // replace with sender's email id     
+            message.From = new MailAddress(email); // replace with sender's email id     
             message.Subject = "Message From" + email;
             message.Body = "Name: " + name + "\nFrom: " + email + "\nPhone: " + phone + "\n" + messages;
             message.IsBodyHtml = true;
@@ -129,7 +129,7 @@ namespace MovieDatabaseProject.Controllers
                 var credential = new NetworkCredential
                 {
                     UserName = "ambertesttime@outlook.com", // replace with sender's email id     
-                    Password = _emailKey // replace with password //how do I hide password?
+                    Password = _emailKey // replace with password
                 };
                 smtp.Credentials = credential;
                 smtp.Host = "smtp-mail.outlook.com";

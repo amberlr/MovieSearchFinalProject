@@ -80,7 +80,7 @@ namespace MovieDatabaseProject
             return mov;
         }
 
-        public IEnumerable<ActorModel> GetActors(MovieInfoModel id )
+        public IEnumerable<ActorModel> GetActors(string id)
         {
             var client = new RestClient($"https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/{ id }");
             var request = new RestRequest(Method.GET);

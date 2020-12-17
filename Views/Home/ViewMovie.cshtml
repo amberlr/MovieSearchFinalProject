@@ -26,9 +26,7 @@
             <a href="@Model.Link" class="btn btn-primary"><b>Watch Trailer</b></a>
         </td>
         <td>
-            <div>
-                <button type="submit" class="btn btn-primary"><a href="/Home/ViewActors">See Actors</a></button>
-            </div>
+            <a href="/Home/ViewActors/@Model.imdbID" class="btn btn-primary"><b>See Actors</b></a>
         </td>
     </tr>
 </table>
@@ -36,25 +34,7 @@
 <table class="table" style="table-layout: fixed">
 
     <tr>
-        <td><div><img src="@Model.Poster" style="height:100%;width:100%" /></div></td>
-        <td style="color: white ; font-size: medium ; border: 1px solid">@Model.Plot</td>
+        <td><div><img src="@Model.Poster" style="height:100%;width:100%"/></div></td>
+        <td style="color: white ; font-size: medium">@Model.Plot</td>
     </tr>
 </table>
-
-
-
-@*<table class="table" style="table-layout: fixed">
-    <tr>
-        <th style="color: lemonchiffon ; font-size: large">Actors</th>
-        <th style="color: lemonchiffon ; font-size: large">Characters</th>
-    </tr>
-
-    @foreach (var actor in Model)
-    {
-        <tr>
-            <td style="color: white ; font-size: medium">@actor.Actor</td>
-            <td style="color: white ; font-size: medium">@actor.Character</td>
-        </tr>
-    }
-
-</table>*@
