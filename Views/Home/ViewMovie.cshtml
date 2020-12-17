@@ -1,9 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-
+﻿
 @model MovieInfoModel
 
 <h3 style="color:white ; font-family: fantasy ; text-align: center">@Model.Title Information</h3>
@@ -25,24 +20,41 @@
 
 </table>
 
+<table class="table" style="table-layout: fixed ; text-align:center">
+    <tr>
+        <td>
+            <a href="@Model.Link" class="btn btn-primary"><b>Watch Trailer</b></a>
+        </td>
+        <td>
+            <div>
+                <button type="submit" class="btn btn-primary"><a href="/Home/ViewActors">See Actors</a></button>
+            </div>
+        </td>
+    </tr>
+</table>
+
 <table class="table" style="table-layout: fixed">
-    @*<tr>
-        <th style="color: lemonchiffon ; font-size: large">Poster</th>
-        <th style="color: lemonchiffon ; font-size: large">Plot</th>
-    </tr>*@
 
     <tr>
         <td><div><img src="@Model.Poster" style="height:100%;width:100%" /></div></td>
-        <td style="color: white ; font-size: medium">@Model.Plot</td>
+        <td style="color: white ; font-size: medium ; border: 1px solid">@Model.Plot</td>
     </tr>
 </table>
 
-<table class="table" style="table-layout: fixed">
+
+
+@*<table class="table" style="table-layout: fixed">
     <tr>
-        <th style="color: lemonchiffon ; font-size: large">Trailer</th>
+        <th style="color: lemonchiffon ; font-size: large">Actors</th>
+        <th style="color: lemonchiffon ; font-size: large">Characters</th>
     </tr>
 
-    <tr>
-        <td><div><a href="@Model.Link"></a></div></td>
-    </tr>
-</table>
+    @foreach (var actor in Model)
+    {
+        <tr>
+            <td style="color: white ; font-size: medium">@actor.Actor</td>
+            <td style="color: white ; font-size: medium">@actor.Character</td>
+        </tr>
+    }
+
+</table>*@

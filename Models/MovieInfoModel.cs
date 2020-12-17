@@ -21,5 +21,8 @@ namespace MovieDatabaseProject.Models
 
         public object Trailer { get; set; }
         public string Link { get; set; }
+
+        public string Actor { get; set; }
+        public string Character { get; set; }
     }
 }

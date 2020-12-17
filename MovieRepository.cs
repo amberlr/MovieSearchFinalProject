@@ -72,32 +72,35 @@ namespace MovieDatabaseProject
             mov.Poster = (string)movie["poster"];
             mov.Plot = (string)movie["plot"];
             mov.imdbID = (string)movie["id"];
-            mov.Trailer = movie["trailer"]; 
-            
-            if(mov.Trailer != null) //haven't been able to get this to work
-            {
-                var trailer = JObject.Parse(response.Content).GetValue("trailer");
-                var link = new MovieInfoModel();
-                link.Link = (string)trailer["link"];
-            }
+            mov.Trailer = movie["trailer"];
+
+            var trailer = JObject.Parse(response.Content).GetValue("trailer");
+            mov.Link = (string)trailer["link"];
 
             return mov;
-
         }
-        //public MovieInfoModel GetTrailer(string userInput)
-        //{
-        //    var client = new RestClient($"https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/{ userInput }");
-        //    var request = new RestRequest(Method.GET);
-        //    request.AddHeader("x-rapidapi-key", _api2Key);
-        //    request.AddHeader("x-rapidapi-host", "imdb-internet-movie-database-unofficial.p.rapidapi.com");
-        //    IRestResponse response = client.Execute(request);
 
-        //    var movie = JObject.Parse(response.Content).GetValue("trailer");
+        public IEnumerable<ActorModel> GetActors(MovieInfoModel id )
+        {
+            var client = new RestClient($"https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/{ id }");
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("x-rapidapi-key", _api2Key);
+            request.AddHeader("x-rapidapi-host", "imdb-internet-movie-database-unofficial.p.rapidapi.com");
+            IRestResponse response = client.Execute(request);
 
-        //    var mov = new MovieInfoModel();
-        //    mov.Trailer = (string)movie["link"];
-        //    return mov;
-        //}
+            var actors = JObject.Parse(response.Content).GetValue("cast");
 
+            var actorList = new List<ActorModel>();
+
+            foreach (var act in actors)
+            {
+                var actor = new ActorModel();
+                actor.Actor = (string)act["actor"];
+                actor.Character = (string)act["character"];
+
+                actorList.Add(actor);
+            }
+            return actorList;
+        }
     }
 }

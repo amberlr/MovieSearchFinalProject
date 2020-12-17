@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Dynamic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -24,7 +25,6 @@ namespace MovieDatabaseProject.Controllers
 
         public IActionResult Index()
         {
-            //var movie = new MovieModel();
             return View();
         }
 
@@ -56,10 +56,24 @@ namespace MovieDatabaseProject.Controllers
 
         public IActionResult ViewMovie(string id)
         {
+            //dynamic movieInfo = new ExpandoObject();
+            //movieInfo.MovieInfo = GetMovieInfo(id);
+            //movieInfo.Actors = GetActors(id);
+            //return View(movieInfo);
+
+
+
             var repo = new MovieRepository();
             var oneMovie = repo.GetMovieInfo(id);
 
             return View(oneMovie);
+        }
+
+        public IActionResult ViewActors(string id)
+        {
+            var repo = new MovieRepository();
+            var actors = repo.GetActors(id);
+            return View(actors);
         }
 
         public IActionResult Privacy()
@@ -101,7 +115,6 @@ namespace MovieDatabaseProject.Controllers
         }
 
         private static readonly string _emailKey = System.IO.File.ReadAllText("emailPass.txt");
-
         private async Task<string> SendEmail(string name, string email, string messages, string phone)
         {
             var message = new MailMessage();
@@ -110,6 +123,7 @@ namespace MovieDatabaseProject.Controllers
             message.Subject = "Message From" + email;
             message.Body = "Name: " + name + "\nFrom: " + email + "\nPhone: " + phone + "\n" + messages;
             message.IsBodyHtml = true;
+
             using (var smtp = new SmtpClient())
             {
                 var credential = new NetworkCredential
