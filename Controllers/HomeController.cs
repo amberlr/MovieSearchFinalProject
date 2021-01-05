@@ -56,13 +56,6 @@ namespace MovieDatabaseProject.Controllers
 
         public IActionResult ViewMovie(string id)
         {
-            //dynamic movieInfo = new ExpandoObject();
-            //movieInfo.MovieInfo = GetMovieInfo(id);
-            //movieInfo.Actors = GetActors(id);
-            //return View(movieInfo);
-
-
-
             var repo = new MovieRepository();
             var oneMovie = repo.GetMovieInfo(id);
 
@@ -118,10 +111,17 @@ namespace MovieDatabaseProject.Controllers
         private async Task<string> SendEmail(string name, string email, string messages, string phone)
         {
             var message = new MailMessage();
-            message.To.Add(new MailAddress("ambertesttime@outlook.com")); // replace with receiver's email id //ok how do I make this look at what user types?
-            message.From = new MailAddress(email); // replace with sender's email id     
-            message.Subject = "Message From" + email;
-            message.Body = "Name: " + name + "\nFrom: " + email + "\nPhone: " + phone + "\n" + messages;
+            message.To.Add(new MailAddress("ambertesttime@outlook.com")); // replace with receiver's email id
+            message.From = new MailAddress("ambertesttime@outlook.com"); // replace with sender's email id     
+            message.Subject = $"Message From: {email}";
+            message.Body = $"Name: {name}" + //been trying to get it to provide each on their own line but it isn't working
+                $"\r\n" +
+                $"From: {email}" +
+                $"\r\n" +
+                $"Phone: {phone}" +
+                $"\r\n" +
+                $"{messages}";
+            //message.Body = "Name: " + name + "\nFrom: " + email + "\nPhone: " + phone + "\n" + messages;
             message.IsBodyHtml = true;
 
             using (var smtp = new SmtpClient())

@@ -77,6 +77,10 @@ namespace MovieDatabaseProject
             var trailer = JObject.Parse(response.Content).GetValue("trailer");
             mov.Link = (string)trailer["link"];
 
+            if(mov.Link == null) //trying to get this to work in view
+            {
+                return null;
+            }
             return mov;
         }
 
